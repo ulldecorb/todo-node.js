@@ -25,7 +25,6 @@ app.use(require('./routes/index'));
 
 
 app.get('/',  ( req, res ) => {
-    console.log( req.body);
     res.send('helo')
 
     // const products = await res.json(res.body.products);

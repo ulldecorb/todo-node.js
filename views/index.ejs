@@ -1,0 +1,17 @@
+<%- include("./partials/header") %>
+
+
+<h1>hello you</h1>
+<%= name %>
+<ul>
+    <% songs.forEach(function(x) { %>
+        <li>
+            <strong><%= x.song %></strong><br>
+            Year: <%= x.year %>
+        </li>
+    <% }); %>
+</ul>
+
+
+
+<%- include('./partials/footer') %> 
