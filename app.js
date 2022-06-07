@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
 require('dotenv').config();
 
 const  app = express();
@@ -24,12 +25,4 @@ app.use(express.json());
 app.use(require('./routes/index'));
 app.use(require('./routes/todo'));
 
-
-app.get('/',  ( req, res ) => {
-    res.send('helo')
-
-    // const products = await res.json(res.body.products);
-    // res.send(products)
-})
-
-app.listen(port, () => console.log(`Server run on port ${port}`));
+app.listen(port, () => console.log(`${chalk.cyan('Server run on port ')}${chalk.bgBlue(' ',port,' ')}`));

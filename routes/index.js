@@ -1,17 +1,14 @@
 const router = require('express').Router();
+const Todo = require('../models/Todo');
 const chalk = require('chalk');
 
-router.get('/', ( req, res ) => {
-    const name = 'Marley';
-    const songs = [
-        { song: 'redemption song', year: 1986},
-        { song: 'I\'ll shoot the sheriff', year: 2000}
-    ]
-
+router.get('/', async ( req, res ) => {
+    const title = 'Todo List'
+    const todos = await Todo.find();
     console.log(`Route ${chalk.blue('"/"')} is ${chalk.green('render now')}`)
     res.render('index', {
-        name,
-        songs
+        title,
+        todos
     });
 })
 
