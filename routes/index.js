@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const chalk = require('chalk');
 
 router.get('/', ( req, res ) => {
     const name = 'Marley';
@@ -7,11 +8,11 @@ router.get('/', ( req, res ) => {
         { song: 'I\'ll shoot the sheriff', year: 2000}
     ]
 
+    console.log(`Route ${chalk.blue('"/"')} is ${chalk.green('render now')}`)
     res.render('index', {
         name,
         songs
     });
-    console.log('route "/" is render now')
 })
 
 module.exports = router;

@@ -4,7 +4,7 @@
 <h1>hello you</h1>
 <%= name %>
 <ul>
-    <% songs.forEach(function(x) { %>
+    <% songs.forEach((x) => { %>
         <li>
             <strong><%= x.song %></strong><br>
             Year: <%= x.year %>
@@ -12,6 +12,18 @@
     <% }); %>
 </ul>
 
-
+<div class="container mt-5">
+    <form action="/add/todo" class="d-flex" method="POST">
+        <input type="text" name="todo" class="form-control" placeholder="Enter task">
+        <input type="submit" value="Add todo" class="btn btn-md btn-primary mx-2">
+    </form>
+    <ul class="list-group my-5">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+</div>
 
 <%- include('./partials/footer') %> 

@@ -22,6 +22,7 @@ app.use(express.json());
 
 // routes
 app.use(require('./routes/index'));
+app.use(require('./routes/todo'));
 
 
 app.get('/',  ( req, res ) => {
