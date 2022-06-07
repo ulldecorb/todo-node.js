@@ -22,10 +22,10 @@ app.use(express.json());
 
 // routes
 app.use(require('./routes/index'));
+app.use(require('./routes/todo'));
 
 
 app.get('/',  ( req, res ) => {
-    console.log( req.body);
     res.send('helo')
 
     // const products = await res.json(res.body.products);
