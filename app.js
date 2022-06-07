@@ -1,4 +1,5 @@
 const express = require('express');
+const { use } = require('express/lib/application');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -12,7 +13,15 @@ mongoose.connect(process.env.DDBB_URL,
     }
 )
 
+// middlewares
+app-use(express.urlencoded({ extended: true }));
+app.use( express.static( 'public' ));
+app.set( 'view engine', 'ejs');
+
+
 app.use(express.json());
+
+// routes
 
 app.get('/', async ( req, res ) => {
     console.log(await req.body)
