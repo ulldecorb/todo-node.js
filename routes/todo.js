@@ -12,16 +12,17 @@ router.post('/add/todo', async ( req, res ) => {
         res.redirect('/');
     })
     .catch((err) => console.log(chalk.red(`${err}`)));
-})
-
-.get('delete/todo/:_id', async ( req, res ) => {
-    const {_id } = req.params;
-    Todo.deleteOne({ _id })
-        .then(() => {
-            console.log(chalk.yellow('Deleted Todo Successfully'));
-            res.redirect('/');
-        })
-        .catch((err) => console.log(chalk.red(`${err}`)))
 });
+
+// router.get("delete/todo/:_id", ( req, res ) => {
+//     const {_id } = req.params;
+//     console.log('_id: ', _id)
+//     Todo.deleteOne({ _id })
+//         .then(() => {
+//             console.log(chalk.yellow('Deleted Todo Successfully'));
+//             res.redirect('/');
+//         })
+//         .catch((err) => console.log(chalk.cyan(`${err}`)))
+// });
 
 module.exports = router;
