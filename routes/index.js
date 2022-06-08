@@ -10,6 +10,17 @@ router.get('/', async ( req, res ) => {
         title,
         todos
     });
-})
+});
+
+router.get('/:_id', async ( req, res ) => {
+    const {_id } = req.params;
+    console.log('_id: ', _id)
+    await Todo.remove({ _id })
+        .then(() => {
+            console.log(chalk.yellow('Deleted Todo Successfully'));
+            res.redirect('/');
+        })
+        .catch((err) => console.log(chalk.cyan(`${err}`)))
+});
 
 module.exports = router;

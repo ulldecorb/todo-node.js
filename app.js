@@ -14,7 +14,7 @@ mongoose.connect(process.env.DDBB_URL,
 )
 
 // middlewares
-app.use(express.urlencoded({ extended: true }));
+app.use( express.urlencoded({ extended: true }));
 app.use( express.static( 'public' ));
 app.set( 'view engine', 'ejs');
 
