@@ -26,8 +26,6 @@ router.get('/delete/:_id', async ( req, res ) => {
 router.get('/update/:_id', async ( req, res ) => {
     const  { todo }  = req.query;
     const {_id } = req.params;
-    // console.log('todo: ', req.query.todo);
-    // const todo =  'ara no' ;
 
     await Todo.findByIdAndUpdate(
              {_id },

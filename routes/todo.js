@@ -14,19 +14,4 @@ router.post('/add/todo', async ( req, res ) => {
     .catch((err) => console.log(chalk.red(`${err}`)));
 });
 
-// router.put('/update/todo/:_id', async ( req, res ) => {
-//     const {_id } = req.params;
-//     const {todo} = req.body;
-
-//     try {
-//           await Todo.updateOne(
-//              {_id },
-//              { $set: { todo }}
-//          );
-//          res.redirect('/');
-//     } catch (err) {
-//         console.log(chalk.cyan(`${err}`))
-//     }
-// });
-
 module.exports = router;
