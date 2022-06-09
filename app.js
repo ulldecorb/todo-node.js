@@ -13,15 +13,12 @@ mongoose.connect(process.env.DDBB_URL,
     }
 )
 
-// middlewares
 app.use( express.urlencoded({ extended: true }));
 app.use( express.static( 'public' ));
 app.set( 'view engine', 'ejs');
 
-
 app.use(express.json());
 
-// routes
 app.use(require('./routes/index'));
 app.use(require('./routes/todo'));
 

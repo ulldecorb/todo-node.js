@@ -12,15 +12,31 @@ router.get('/', async ( req, res ) => {
     });
 });
 
-router.get('/:_id', async ( req, res ) => {
+router.get('/delete/:_id', async ( req, res ) => {
     const {_id } = req.params;
-    console.log('_id: ', _id)
+    
     await Todo.remove({ _id })
         .then(() => {
             console.log(chalk.yellow('Deleted Todo Successfully'));
             res.redirect('/');
         })
-        .catch((err) => console.log(chalk.cyan(`${err}`)))
+        .catch((err) => console.log(chalk.cyan(`${err}`)));
+});
+
+router.get('/update/:_id', async ( req, res ) => {
+    const  { todo }  = req.query;
+    const {_id } = req.params;
+
+    await Todo.findByIdAndUpdate(
+             {_id },
+             { $set: { todo }},
+             {new: true}
+         )
+         .then(() => {
+            console.log(chalk.yellow(`Update ${todo} Successfully`));
+             res.redirect('/');
+         })
+        .catch(( err ) => console.log(chalk.cyan(`${err}`))); 
 });
 
 module.exports = router;
