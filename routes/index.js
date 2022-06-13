@@ -24,12 +24,16 @@ router.get('/delete/:_id', async ( req, res ) => {
 });
 
 router.get('/update/:_id', async ( req, res ) => {
-    const  { todo }  = req.query;
+    const { todo } = req.query;
+    const completed = req.query.completed === 'on' ? true : false;
+    // const  completed  = true;
+    console.log(completed)
     const { _id } = req.params;
+
 
     await Todo.findByIdAndUpdate(
              {_id },
-             { $set: { todo }},
+             { $set: { todo, completed } },
              {new: true}
     )
     .then(() => {
