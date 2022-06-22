@@ -1,0 +1,40 @@
+<ul  id="accordion">
+    <% todos.forEach((todo) => { %>
+        <li class="card my-1 shadow bg-body rounded">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#<%= todo.todo.split('').map((x) => x.match(/[a-z]/i)  ? x : '').join('') %>" 
+                aria-expanded="false" 
+                aria-controls="<%= todo.todo.split('').map((x) => x.match(/[a-z]/i)  ? x : '').join('') %>">
+                    <% if (todo.completed) { %>
+                        <del>
+                    <% } %>    
+                        <%= todo.todo %>
+                    <% if (todo.completed) { %>
+                    </del>
+                    <% } %>
+                </button>
+              </h5>
+              <p>
+                <%- todo.date.toLocaleDateString() %>
+                <%- todo.date.toLocaleTimeString() %>
+              </p>
+            </div>
+            <div class="collapse" id="<%= todo.todo.split('').map((x) => x.match(/[a-z]/i)  ? x : '').join('') %>">
+              <div class="card-body">
+                <form action="/update/<%= todo._id %>" class="d-flex" method="GET">
+                    <input class="form-check-input mx-2" type="checkbox" 
+                    <% if (todo.completed) { %>
+                        checked
+                    <% } %>      
+                    id="flexCheckDefault" name="completed">
+                    <input type="text" name="todo" class="form-control" value="<%= todo.todo %>">
+                    <input type="submit" value="Update" class="btn btn-md btn-primary mx-2">
+                </form>
+                <a href="/delete/<%= todo._id %>" class="btn btn-danger btn-md btn-primary my-2">Delete</a>
+              </div>
+            </div>
+        </li>
+   <% }); %>
+</ul>
