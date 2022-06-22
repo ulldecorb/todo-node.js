@@ -16,6 +16,10 @@
                     <% } %>
                 </button>
               </h5>
+              <p>
+                <%- todo.date.toLocaleDateString() %>
+                <%- todo.date.toLocaleTimeString() %>
+              </p>
             </div>
             <div class="collapse" id="<%= todo.todo.split('').map((x) => x.match(/[a-z]/i)  ? x : '').join('') %>">
               <div class="card-body">
